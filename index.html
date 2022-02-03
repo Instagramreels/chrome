@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chrome</title>
+
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+        <style>
+            
+            * {
+    margin:0;
+    padding:0;
+    outline:0px solid black;
+}
+
+body {
+    position:fixed;
+    width:100%;
+}
+
+
+#toolbar {
+    background-color:#fff;
+    height:50px;
+    width:100%;
+    display:flex;
+    box-shadow:0 0 10px 0.1px lightgrey;
+    justify-content: space-evenly;
+    margin:0;
+}
+
+img {
+    margin:auto;
+}
+
+#inputbar {
+    height:40px;
+    margin:auto;
+    width:65%;
+    background-color:rgba(0,0,0,0.04);
+    border-radius:25px;
+    margin-left:1%;
+    margin-right:3%;
+    display:flex;
+}
+
+#secure {
+    height:17px;
+    margin-left:5%;
+    margin-right:3%;
+}
+
+#mic {
+    height:22px;
+    margin-left:2%;
+    margin-right:0;
+    display:none;
+}
+
+#input {
+    background-color:transparent;
+    outline:none;
+    border:none;
+    margin:0;
+    width:80%;
+    font-size:15px;
+}
+
+#home {
+    height:20px;
+    margin-right:3%;
+    margin-left:3%;
+}
+
+#tabs {
+    height:20px;
+}
+
+#tdots {
+    height:17px;
+    margin-right:5%;
+}
+
+
+#window {
+    width:100%;
+    height:91.5vh;
+    border:none;
+    outline:0px solid black;
+    margin:0;
+    padding:0;
+}
+            
+        </style>
+        
+        
+        <script>
+            
+            window.onload = () => {
+    
+    
+    
+    function id(id) {
+        return document.getElementById(id);
+    }
+    
+    let input = id("input");
+    
+    input.onfocus = () => {
+        
+        if(!input.value.includes("https://www."))
+        input.value = "https://www."+id("input").value;
+        
+        id("input").select();
+        
+        id("home").style.display = "none";
+        id("tabs").style.display = "none";
+        id("tdots").style.display = "none";
+        id("secure").src = "https://i.ibb.co/59ydtV7/1643798384716.png"
+        id("secure").style.height = "22px"
+        id("secure").style.marginLeft = "2.5%"
+        id("mic").style.display = "block"
+        
+        id("inputbar").style.width = "99%";
+        
+    }
+    
+    id("input").onblur = () => {
+        
+        if(input.value.includes("https://www."))
+        id("input").value = id("input").value.replace("https://www.","");
+        
+        id("home").style.display = "block";
+        id("tabs").style.display = "block";
+        id("tdots").style.display = "block";
+        id("secure").src = "https://i.ibb.co/QjW8JT2/1643793425028.png"
+        id("secure").style.height = "17px"
+        id("secure").style.marginLeft = "5%"
+        id("mic").style.display = "none"
+        
+        id("inputbar").style.width = "65%";
+        
+    }
+    
+    
+    id("input").onkeyup = () => {
+    
+    if(event.keyCode == 13) {
+    
+    let searched = document.getElementById("input").value;
+    searched = searched.substring(searched.indexOf('=') + 1);
+    
+    let url = "https://www.google.com/search?q="+searched+"&igu=1&source=hp&ei=bHz6YaeYCpD1-QaX053ADQ&oq=hi&gs_lcp=ChFtb2JpbGUtZ3dzLXdpei1ocBADUDFYSGChAWgAcAB4AIABAIgBAJIBAJgBAKABAbABAA&sclient=mobile-gws-wiz-hp";
+    
+    
+    id("input").value = url;
+    id("input").blur();
+    document.getElementById("window").src = url;
+
+    }
+    }
+    
+    setInterval( () => {
+        
+        let window = document.getElementById("window");
+        
+        if(window.src == "https://www.instagram.com")
+            window.src = "https://vinaykpro.github.io/Instagram";
+        
+    },500)
+    
+    
+    
+    window.onclick = () => {
+        alert(""+document.getElementById("window").contentWindow.location.href);
+    }
+    
+    
+}
+            
+        </script>
+        
+        
+        
+        
+    </head>
+    <body>
+        
+        <div id="toolbar">
+            
+            <img id="home" src="https://i.ibb.co/Mk5RtCC/1643793213845.png" />
+            
+            <div id="inputbar">
+                
+                <img id="secure" src="https://i.ibb.co/QjW8JT2/1643793425028.png" />
+                
+                <input type="text" id="input" value="google.com/search?q=instagram&igu=1&source=hp&ei=bHz6YaeYCpD1-QaX053ADQ&oq=hi&gs_lcp=ChFtb2JpbGUtZ3dzLXdpei1ocBADUDFYSGChAWgAcAB4AIABAIgBAJIBAJgBAKABAbABAA&sclient=mobile-gws-wiz-hp" placeholder = "Search or type web address"/>
+                
+                <img id="mic" src="https://i.ibb.co/Vw53sMW/1643798450018.png" />
+                
+            </div>
+            
+            <img height="24px" id="tabs" src="https://i.ibb.co/27bGhkx/1643794067732.png" />
+            
+            
+            <img height="24px" id="tdots" src="https://i.ibb.co/Tm5RGWj/1643793748452.png" />
+            
+        </div>
+        
+        <iframe id="window" src="https://www.google.com/search?q=instagram&igu=1&source=hp&ei=bHz6YaeYCpD1-QaX053ADQ&oq=hi&gs_lcp=ChFtb2JpbGUtZ3dzLXdpei1ocBADUDFYSGChAWgAcAB4AIABAIgBAJIBAJgBAKABAbABAA&sclient=mobile-gws-wiz-hp" >
+</iframe>
+        
+        
+        
+    </body>
+</html>
